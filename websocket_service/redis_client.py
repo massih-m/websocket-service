@@ -23,12 +23,12 @@ class RedisClient:
         while await channel.wait_message():
             msg = await channel.get_json(encoding="utf-8")
             print("received message => {}".format(msg))
-            asyncio.ensure_future(WebsocketInterface.publish(msg))
+            asyncio.ensure_future(WebsocketInterface.publish(msg.get('topic'), msg.get('data')))
 
 
 async def redis_stuff():
     redis = await aioredis.create_redis(('127.0.0.1', 6379))
-    await redis.publish('websocket_interface', json.dumps('hellooooo'))
+    await redis.publish('websocket_interface', json.dumps({'topic': 'test', 'data': 'hellooooo'}))
 
     #await redis.set('key', 'hello world')
     #val = await redis.get(key='key', encoding='UTF-8')

@@ -23,18 +23,19 @@ class WebsocketInterface:
         print('handle_connection')
         try:
             async for message in client:
-                await self.client_handler(message, client)
+                await self.client_handler(client, message)
         except websockets.exceptions.ConnectionClosed:
             self.clients.remove(client)
 
-    async def client_handler(self, message):
+    async def client_handler(self, client: websockets, message: str):
         print('client connected with message: {}'.format(message))
         msg = json.loads(message)
+        self.clients.add(msg['topic'], client)
         print(msg['topic'])
 
     @classmethod
-    async def publish(cls, msg):
-        for client in cls.clients:
+    async def publish(cls, topic, msg):
+        for client in cls.clients.for_topic(topic):
             print("msg to send {}".format(msg))
             await client.send(msg)
 
