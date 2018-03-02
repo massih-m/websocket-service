@@ -23,5 +23,5 @@ class WebsocketClient:
 
             self.clients.pop(client)
 
-    def for_topic(self, topic: str):
+    def get_subscribers(self, topic: str):
         return self.topics.get(topic, [])

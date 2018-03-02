@@ -35,7 +35,7 @@ class WebsocketInterface:
 
     @classmethod
     async def publish(cls, topic, msg):
-        for client in cls.clients.for_topic(topic):
+        for client in cls.clients.get_subscribers(topic):
             print("msg to send {}".format(msg))
             await client.send(msg)
 
