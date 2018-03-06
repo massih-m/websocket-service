@@ -1,7 +1,7 @@
 import asyncio
 
-from websocket_service.websocket_interface import WebsocketInterface
-from websocket_service.redis_client import RedisClient
+from py_scripts.websocket_service import WebsocketInterface
+from py_scripts.websocket_service.redis_client import RedisClient
 
 
 async def service_starter():

@@ -2,8 +2,8 @@ import asyncio
 import aioredis
 import json
 
-from websocket_service.my_logging import get_logger
-from websocket_service.websocket_interface import WebsocketInterface
+from py_scripts.websocket_service.my_logging import get_logger
+from py_scripts.websocket_service import WebsocketInterface
 
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379
