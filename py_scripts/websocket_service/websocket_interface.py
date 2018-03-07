@@ -1,8 +1,8 @@
 import json
 import websockets
 
-from py_scripts.websocket_service.my_logging import get_logger
-from py_scripts.websocket_service.websocket_client import WebsocketClient
+from .my_logging import get_logger
+from .websocket_client import WebsocketClient
 
 WS_HOST = 'localhost'
 WS_PORT = 8282

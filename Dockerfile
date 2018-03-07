@@ -1,12 +1,13 @@
-from alpine:latest
+FROM alpine:latest as builder
 
-ENV MYPATH /home/ws_app
+WORKDIR /home
 
-RUN mkdir /home/ws_app
+COPY requirements.txt py_scripts ./
 
-WORKDIR $MYPATH
-
-COPY requirements.txt websocket_service ./
-
-RUN apk add --no-cache g++ python3 python3-dev && pip3 install -r requirements.txt
+RUN apk add --no-cache g++ python3 python3-dev py3-virtualenv \
+    && virtualenv venv \
+    && source ./venv/bin/activate \
+    && pip install -r requirements.txt \
+    && deactivate \
+    && virtualenv --relocatable venv
 
