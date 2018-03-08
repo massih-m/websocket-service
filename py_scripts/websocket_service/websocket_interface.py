@@ -4,7 +4,7 @@ import websockets
 from .my_logging import get_logger
 from .websocket_client import WebsocketClient
 
-WS_HOST = 'localhost'
+WS_HOST = '127.0.01'
 WS_PORT = 8282
 
 
