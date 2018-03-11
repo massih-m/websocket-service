@@ -14,12 +14,14 @@ RUN apk add --no-cache g++ python3 python3-dev py3-virtualenv \
     && virtualenv --relocatable venv
 
 
-FROM redis:4.0-alpine
+FROM alpine:latest
 
 WORKDIR /home
 
-EXPOSE 8282
+EXPOSE 8888
 
 COPY --from=builder /home/ws_app ./
 
-RUN apk add --no-cache python3 && ./venv/bin/python ./main.py
+RUN apk add --no-cache python3
+
+CMD ["./venv/bin/python", "./main.py"]

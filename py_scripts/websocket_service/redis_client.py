@@ -5,7 +5,7 @@ import json
 from .my_logging import get_logger
 from .websocket_interface import WebsocketInterface
 
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 
 
