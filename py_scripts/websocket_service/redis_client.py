@@ -5,18 +5,19 @@ import json
 from .my_logging import get_logger
 from .websocket_interface import WebsocketInterface
 
-REDIS_HOST = 'redis'
-REDIS_PORT = 6379
-
 
 class RedisClient:
     def __init__(self):
         self.logger = get_logger(__file__)
+        self._redis = None
+        self.HOST = 'redis'
+        self.PORT = 6379
+        self.WS_CHANNEL = 'websocket_interface'
 
     async def redis_start(self):
-        _redis = await aioredis.create_redis((REDIS_HOST, REDIS_PORT))
+        self._redis = await aioredis.create_redis((self.HOST, self.PORT))
         self.logger.info('Redis listener started')
-        subscribe = await _redis.subscribe('websocket_interface')
+        subscribe = await self._redis.subscribe(self.WS_CHANNEL)
         return subscribe[0]
 
     async def redis_listener(self, channel):

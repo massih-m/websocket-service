@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Vasttrafik",
+    "inputs": [
+      {
+        "label": "Station name",
+        "type": "q"
+      },
+      {
+        "value": "Open",
+        "onclick": "blabla"
+      },
+      {
+        "value": "Close",
+        "onclick": "Closeblabla"
+      }
+    ]
+  },
+  {
+    "name": "Weather",
+    "inputs": [
+      {
+        "label": "City",
+        "type": "w"
+      },
+    ]
+  }
+]

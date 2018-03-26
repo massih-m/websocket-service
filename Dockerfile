@@ -18,9 +18,9 @@ FROM alpine:latest
 
 WORKDIR /home
 
-EXPOSE 8888
-
 COPY --from=builder /home/ws_app ./
+
+EXPOSE 8888
 
 RUN apk add --no-cache python3
 
